@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Buku Kas Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Excel Export -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    <!-- PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+    <h2>Buku Kas Digital</h2>
+</div>
+
+<div class="container">
+
+    <!-- SALDO TOTAL -->
+    <div class="card saldo">
+        <h3>Saldo Total</h3>
+        <h1 id="saldoTotal">Rp 0</h1>
+
+        <p class="countdown">
+            Reset Mingguan dalam: <span id="weeklyCountdown">-</span><br>
+            Reset Bulanan dalam: <span id="monthlyCountdown">-</span>
+        </p>
+    </div>
+
+    <!-- SALDO MINGGUAN & BULANAN -->
+    <div class="grid">
+        <div class="card pemasukan">
+            <h4>Saldo Mingguan</h4>
+            <h2 id="saldoWeekly">Rp 0</h2>
+        </div>
+        <div class="card pengeluaran">
+            <h4>Saldo Bulanan</h4>
+            <h2 id="saldoMonthly">Rp 0</h2>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="card">
+        <label><strong>Filter Transaksi:</strong></label>
+        <select id="filter" onchange="renderFiltered()">
+            <option value="all">Semua</option>
+            <option value="weekly">Mingguan</option>
+            <option value="monthly">Bulanan</option>
+        </select>
+    </div>
+
+    <!-- FORM INPUT -->
+    <div class="card form-card">
+        <h3>Tambah Transaksi</h3>
+
+        <label>Jenis Transaksi</label>
+        <select id="type">
+            <option value="income">Pemasukan</option>
+            <option value="expense">Pengeluaran</option>
+        </select>
+
+        <label>Kategori</label>
+        <select id="category">
+            <option value="weekly">Mingguan</option>
+            <option value="monthly">Bulanan</option>
+        </select>
+
+        <label>Nominal</label>
+        <input type="number" id="amount" placeholder="Masukkan nominal">
+
+        <label>Deskripsi</label>
+        <input type="text" id="desc" placeholder="Keterangan (opsional)">
+
+        <label>Tanggal</label>
+        <input type="date" id="date">
+        
+        <button onclick="addTransaction()">Tambah</button>
+    </div>
+
+    <!-- GRAFIK -->
+    <div class="card">
+        <h3>Grafik Pemasukan vs Pengeluaran</h3>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h3>Grafik Tren Transaksi Harian</h3>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <!-- EXPORT -->
+    <div class="card">
+        <button onclick="exportExcel()">Export Excel</button>
+        <button onclick="exportPDF()">Export PDF</button>
+    </div>
+
+    <!-- LIST -->
+    <h3>Riwayat Transaksi</h3>
+    <div id="transactionList"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
