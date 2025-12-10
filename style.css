@@ -1,72 +1,101 @@
+/* =============================
+   GLOBAL
+   ============================= */
 body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
+    font-family: "Inter", Arial, sans-serif;
+    background: #f2f3f7;
     margin: 0;
-    padding-bottom: 80px;
+    padding: 10px 0 70px;
 }
 
+/* =============================
+   HEADER
+   ============================= */
 .header {
     background: #4a90e2;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
+/* =============================
+   CONTAINER
+   ============================= */
 .container {
-    padding: 15px;
+    padding: 12px;
 }
 
+/* =============================
+   CARD
+   ============================= */
 .card {
     background: white;
-    padding: 16px;
+    padding: 14px;
     border-radius: 12px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .saldo {
-    background: linear-gradient(135deg, #34c759, #28a745);
+    background: linear-gradient(135deg, #30c86d, #2eb85c);
     color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.saldo h1 {
+    margin: 8px 0;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+/* Countdown lebih kecil */
+.countdown {
+    margin-top: 8px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* =============================
+   GRID SALDO
+   ============================= */
+.grid {
+    display: flex;
+    gap: 10px;
+}
+
+.grid .card {
+    padding: 12px;
     text-align: center;
 }
 
-.countdown {
-    margin-top: 10px;
-    font-size: 14px;
+.grid h2 {
+    font-size: 20px;
+    margin: 6px 0;
 }
 
-.grid {
-    display: flex;
-    gap: 12px;
-}
-
+/* Auto vertical on mobile */
 @media (max-width: 600px) {
     .grid {
         flex-direction: column;
     }
 }
 
-.grid .card {
-    flex: 1;
-}
-
-.pemasukan {
-    border-left: 6px solid #34c759;
-}
-
-.pengeluaran {
-    border-left: 6px solid #ff3b30;
-}
-
+/* =============================
+   FORM
+   ============================= */
 input, select {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
+    font-size: 15px;
     margin-top: 6px;
-    margin-bottom: 14px;
-    border-radius: 8px;
-    border: 1px solid #cfcfcf;
-    font-size: 16px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #d7d7d7;
+    background: #fafafa;
 }
 
 button {
@@ -74,30 +103,60 @@ button {
     padding: 12px;
     background: #4a90e2;
     color: white;
-    border-radius: 8px;
-    font-size: 17px;
+    border-radius: 10px;
     border: none;
-    cursor: pointer;
+    font-size: 16px;
+    margin-top: 6px;
 }
 
+button:active {
+    transform: scale(0.98);
+}
+
+/* =============================
+   GRAFIK
+   ============================= */
+canvas {
+    width: 100% !important;
+    max-height: 230px !important;
+}
+
+/* =============================
+   LIST TRANSAKSI MODERN
+   ============================= */
 .transaction-card {
     background: white;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     border-left: 5px solid #4a90e2;
-    display: flex;
-    justify-content: space-between;
+}
+
+.transaction-card strong {
+    font-size: 15px;
+}
+
+.transaction-card small {
+    opacity: 0.7;
+    font-size: 12px;
 }
 
 .delete-btn {
-    background: red;
-    color: white;
-    padding: 8px 12px;
+    background: #ff4d4d;
+    border: none;
+    padding: 7px 12px;
     border-radius: 8px;
+    color: white;
+    font-size: 13px;
 }
 
-canvas {
-    width: 100% !important;
-    max-height: 300px !important;
+/* =============================
+   FONT RESPONSIVE
+   ============================= */
+@media (max-width: 480px) {
+    .header { font-size: 17px; }
+    .saldo h1 { font-size: 24px; }
+    .grid h2 { font-size: 18px; }
+    .transaction-card { padding: 12px; }
 }
